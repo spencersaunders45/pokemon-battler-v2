@@ -1,23 +1,37 @@
-import logo from './logo.svg';
 import './App.css';
+import axios from 'axios'
+import { Router } from '@reach/router'
+import { useEffect, useState } from 'react';
+
+import Main from './views/Main/Main';
+import Battle from './views/Battle/Battle';
+import MoveSelector from './views/MoveSelector/MoveSelector';
 
 function App() {
+  const pokemon = ["venusaur", "charizard", "blastoise", "alakazam", "gengar"]
+  const [userPokemon, setUserPokemon] = useState('');
+  const [userHealth, setUserHealth] = useState(null);
+  const [userStatus, setUserStatus] = useState('healthy');
+  const [userAttack, setUserAttack] = useState(null);
+  const [userDef, setUserDef] = useState(null);
+  const [userSpecAtt, setUserSpecAtt] = useState(null);
+  const [userSpecDef, setUserSpecDef] = useState(null);
+  const [foePokemon, setFoePokemon] = useState('');
+  const [foeHealth, setFoeHealth] = useState(null);
+  const [foeStatus, setFoeStatus] = useState('healthy');
+  const [foeAttack, setFoeAttack] = useState(null);
+  const [foeDef, setFoeDef] = useState(null);
+  const [foeSpecAtt, setFoeSpecAtt] = useState(null);
+  const [foeSpecDef, setFoeSpecDef] = useState(null);
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Main path="/" />
+        <MoveSelector path="/move-selection" />
+        <Battle path="battle" />
+      </Router>
     </div>
   );
 }
