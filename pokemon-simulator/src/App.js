@@ -10,8 +10,8 @@ import MoveSelector from './views/MoveSelector/MoveSelector';
 function App() {
   const [pokemonData, setPokemonData] = useState([]);
   // venusaur = 2 | charizard = 5 | blastoise = 8 | alakazam = 64 | gengar = 93
-  const pokemon = ["venusar", "charizard", "blastoise", "alakazam", "gengar"]
-  const moves = {venusar: ["growl", "sleep-powder", "tackle", "solar-beam", "razor-leaf", "take-down"], charizard: ["smokescreen", "sunny-day", "flamethrower", "slash", "fire-spin", "scratch"], blastoise: ["protect", "rain-dance", "bite", "hydro-pump", "tackle", "aqua-tail"], alakazam: ["disable", "recover", "psychic", "psybeam", "thunder-punch", "swift"], gengar: ["confuse-ray", "protect", "shadow-ball", "shadow-punch", "dark pulse", "thief"]};
+  const pokemon = ["venusaur", "charizard", "blastoise", "alakazam", "gengar"]
+  const moves = {venusaur: ["growl", "sleep-powder", "tackle", "solar-beam", "razor-leaf", "take-down"], charizard: ["smokescreen", "sunny-day", "flamethrower", "slash", "fire-spin", "scratch"], blastoise: ["protect", "rain-dance", "bite", "hydro-pump", "tackle", "aqua-tail"], alakazam: ["disable", "recover", "psychic", "psybeam", "thunder-punch", "swift"], gengar: ["confuse-ray", "protect", "shadow-ball", "shadow-punch", "dark-pulse", "thief"]};
   const [weather, useWeather] = useState('');
   // ---------------------------------------------------
   const [userPokemon, setUserPokemon] = useState('charizard');
@@ -95,14 +95,16 @@ function App() {
 
   // Set foeMoveData
   useEffect(() => {
-    axios.get("https://pokeapi.co/api/v2/move/" + foeMove1)
-      .then(res => setFoeMove1Data(res.data));
-    axios.get("https://pokeapi.co/api/v2/move/" + foeMove2)
-      .then(res => setFoeMove2Data(res.data));
-    axios.get("https://pokeapi.co/api/v2/move/" + foeMove3)
-      .then(res => setFoeMove3Data(res.data));
-    axios.get("https://pokeapi.co/api/v2/move/" + foeMove4)
-      .then(res => setFoeMove4Data(res.data))
+    if(foeMove4 !== ''){
+      axios.get("https://pokeapi.co/api/v2/move/" + foeMove1)
+        .then(res => setFoeMove1Data(res.data));
+      axios.get("https://pokeapi.co/api/v2/move/" + foeMove2)
+        .then(res => setFoeMove2Data(res.data));
+      axios.get("https://pokeapi.co/api/v2/move/" + foeMove3)
+        .then(res => setFoeMove3Data(res.data));
+      axios.get("https://pokeapi.co/api/v2/move/" + foeMove4)
+        .then(res => setFoeMove4Data(res.data));
+    }
   }, [foeMove4])
 
 
@@ -110,7 +112,10 @@ function App() {
   // Set foeMovepp
   useEffect(() => {
     if(foeMove4Data !== undefined){
-      console.log(foeMove1Data);
+      setFoeMove1pp(foeMove1Data.pp);
+      setFoeMove2pp(foeMove2Data.pp);
+      setFoeMove3pp(foeMove3Data.pp);
+      setFoeMove4pp(foeMove4Data.pp);
     }
   }, [foeMove4Data])
 
@@ -138,10 +143,18 @@ function App() {
 
 
 
+  // update user pokemon+
+  const updatePokemon = (pokemon) => {
+    setUserPokemon(pokemon)
+  }
+
+
+
   return (
     <div className="App">
+      {console.log(userPokemon)}
       <Router>
-        <Main path="/" pokemonList={ pokemon }/>
+        <Main path="/" pokemonList={ pokemon } userPokemon={ userPokemon } updatePokemon={ updatePokemon } />
         <MoveSelector path="/move-selection" />
         <Battle path="battle" />
       </Router>

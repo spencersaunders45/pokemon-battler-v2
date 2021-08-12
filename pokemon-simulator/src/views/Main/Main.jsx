@@ -2,24 +2,29 @@ import React from 'react';
 
 import './Main.css'
 import SmallCard from '../../components/SmallCard/SmallCard';
+import LargeCard from '../../components/LargeCard/LargeCard';
 
 export default (props) => {
-  // const pokemonData = props.pokemonData;
-  // const pokemonList = props.pokemonList;
+  const pokemonList = props.pokemonList;
+  const updatePokemon = props.updatePokemon;
+  const userPokemon = props.userPokemon;
 
 
 
   return(
-    <div>
-      {/* {pokemonData === undefined ? <h1>waiting for data...</h1> :
-      <div>
-        {pokemonList.map((pokemonNum, idx) =>
-        <h1 key={idx}>
-          <SmallCard pokemonData={ pokemonData } pokemonNum={ pokemonNum } />
-        </h1>
-        )}
+    <div className="container">
+      <div className="row">
+        <div className="col">
+          {pokemonList.map((pokemonName, idx) =>
+            <h1 key={idx}>
+              <SmallCard pokemonName={ pokemonName } updatePokemon={ updatePokemon } />
+            </h1>
+          )}
+        </div>
+        <div className="col">
+          <LargeCard userPokemon={ userPokemon } />
+        </div>
       </div>
-      } */}
     </div>
   )
 }
