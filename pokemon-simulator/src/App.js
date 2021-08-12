@@ -8,41 +8,43 @@ import Battle from './views/Battle/Battle';
 import MoveSelector from './views/MoveSelector/MoveSelector';
 
 function App() {
-  const pokemon = ["venusaur", "charizard", "blastoise", "alakazam", "gengar"]
-  const moves = {venusaur: ["growl", "sleep powder", "tackle", "solar beam", "razor leaf", "take down"], charizard: ["smokescreen", "sunny day", "flamethrower", "slash", "fire spin", "scratch"], blastoise: ["protect", "rain dance", "bite", "hydro pump", "tackle", "aqua tail"], alakazam: ["disable", "recover", "psychic", "psybeam", "thunder punch", "swift"], gengar: ["confuse ray", "protect", "shadow ball", "shadow punch", "dark pulse", "thief"]};
+  const [pokemonData, setPokemonData] = useState([]);
+  // venusaur = 2 | charizard = 5 | blastoise = 8 | alakazam = 64 | gengar = 93
+  const pokemon = ["venusar", "charizard", "blastoise", "alakazam", "gengar"]
+  const moves = {venusar: ["growl", "sleep-powder", "tackle", "solar-beam", "razor-leaf", "take-down"], charizard: ["smokescreen", "sunny-day", "flamethrower", "slash", "fire-spin", "scratch"], blastoise: ["protect", "rain-dance", "bite", "hydro-pump", "tackle", "aqua-tail"], alakazam: ["disable", "recover", "psychic", "psybeam", "thunder-punch", "swift"], gengar: ["confuse-ray", "protect", "shadow-ball", "shadow-punch", "dark pulse", "thief"]};
   const [weather, useWeather] = useState('');
   // ---------------------------------------------------
-  const [userPokemon, setUserPokemon] = useState('');
-  const [userType1, setUserType1] = useState('');
-  const [userType2, setUserType2] = useState(null);
+  const [userPokemon, setUserPokemon] = useState('charizard');
+  const [userPokemonData, setUserPokemonData] = useState({});
   const [userHealth, setUserHealth] = useState(null);
   const [userStatus, setUserStatus] = useState('healthy');
   const [userAttack, setUserAttack] = useState(null);
   const [userDef, setUserDef] = useState(null);
   const [userSpecAtt, setUserSpecAtt] = useState(null);
   const [userSpecDef, setUserSpecDef] = useState(null);
-  const [userMove1, setUserMove1] = useState(null);
-  const [userMove2, setUserMove2] = useState(null);
-  const [userMove3, setUserMove3] = useState(null);
-  const [userMove4, setUserMove4] = useState(null);
+  const [userSpeed, setUserSpeed] = useState(null);
+  const [userMove1, setUserMove1] = useState('');
+  const [userMove2, setUserMove2] = useState('');
+  const [userMove3, setUserMove3] = useState('');
+  const [userMove4, setUserMove4] = useState('');
   const [userMove1pp, setUserMove1pp] = useState(null);
   const [userMove2pp, setUserMove2pp] = useState(null);
   const [userMove3pp, setUserMove3pp] = useState(null);
   const [userMove4pp, setUserMove4pp] = useState(null);
-  const [userMove1Type, setUserMove1Type] = useState('');
-  const [userMove2Type, setUserMove2Type] = useState('');
-  const [userMove3Type, setUserMove3Type] = useState('');
-  const [userMove4Type, setUserMove4Type] = useState('');
+  const [userMove1Data, setUserMove1Data] = useState({});
+  const [userMove2Data, setUserMove2Data] = useState({});
+  const [userMove3Data, setUserMove3Data] = useState({});
+  const [userMove4Data, setUserMove4Data] = useState({});
   // ----------------------------------------------------
   const [foePokemon, setFoePokemon] = useState('');
-  const [foeType1, setFoeType1] = useState('');
-  const [foeType2, setFoeType2] = useState(null);
+  const [foePokemonData, setFoePokemonData] = useState({});
   const [foeHealth, setFoeHealth] = useState(null);
   const [foeStatus, setFoeStatus] = useState('healthy');
   const [foeAttack, setFoeAttack] = useState(null);
   const [foeDef, setFoeDef] = useState(null);
   const [foeSpecAtt, setFoeSpecAtt] = useState(null);
   const [foeSpecDef, setFoeSpecDef] = useState(null);
+  const [foeSpeed, setFoeSpeed] = useState(null);
   const [foeMove1, setFoeMove1] = useState('');
   const [foeMove2, setFoeMove2] = useState('');
   const [foeMove3, setFoeMove3] = useState('');
@@ -51,17 +53,17 @@ function App() {
   const [foeMove2pp, setFoeMove2pp] = useState(null);
   const [foeMove3pp, setFoeMove3pp] = useState(null);
   const [foeMove4pp, setFoeMove4pp] = useState(null);
-  const [foeMove1Type, setFoeMove1Type] = useState('');
-  const [foeMove2Type, setFoeMove2Type] = useState('');
-  const [foeMove3Type, setFoeMove3Type] = useState('');
-  const [foeMove4Type, setFoeMove4Type] = useState('');
+  const [foeMove1Data, setFoeMove1Data] = useState({});
+  const [foeMove2Data, setFoeMove2Data] = useState({});
+  const [foeMove3Data, setFoeMove3Data] = useState({});
+  const [foeMove4Data, setFoeMove4Data] = useState({});
   // --------------------------------------------------
   const [loaded, setLoaded] = useState(false);
   const [loadedPokemon, setLoadedPokemon] = useState(false);
 
 
 
-  // Set foe pokemon
+  // Set foePokemon
   useEffect(() => {
     let num = Math.floor(Math.random() * pokemon.length);
     setFoePokemon(pokemon[num]);
@@ -91,11 +93,55 @@ function App() {
 
 
 
+  // Set foeMoveData
+  useEffect(() => {
+    axios.get("https://pokeapi.co/api/v2/move/" + foeMove1)
+      .then(res => setFoeMove1Data(res.data));
+    axios.get("https://pokeapi.co/api/v2/move/" + foeMove2)
+      .then(res => setFoeMove2Data(res.data));
+    axios.get("https://pokeapi.co/api/v2/move/" + foeMove3)
+      .then(res => setFoeMove3Data(res.data));
+    axios.get("https://pokeapi.co/api/v2/move/" + foeMove4)
+      .then(res => setFoeMove4Data(res.data))
+  }, [foeMove4])
+
+
+
+  // Set foeMovepp
+  useEffect(() => {
+    if(foeMove4Data !== undefined){
+      console.log(foeMove1Data);
+    }
+  }, [foeMove4Data])
+
+
+
+  // Set foePokemonData
+  useEffect(() => {
+    axios.get("https://pokeapi.co/api/v2/pokemon/" + foePokemon)
+      .then(res => setFoePokemonData(res.data))
+  }, [foePokemon])
+
+
+
+  // Set all other foe data
+  useEffect(() => {
+    if(foePokemonData.stats !== undefined){
+      setFoeHealth(foePokemonData.stats[0].base_stat);
+      setFoeAttack(foePokemonData.stats[1].base_stat);
+      setFoeDef(foePokemonData.stats[2].base_stat);
+      setFoeSpecAtt(foePokemonData.stats[3].base_stat);
+      setFoeSpecDef(foePokemonData.stats[4].base_stat);
+      setFoeSpeed(foePokemonData.stats[5].base_stat);
+    }
+  }, [foePokemonData])
+
+
+
   return (
     <div className="App">
-      {console.log(foeMove1, foeMove2, foeMove3, foeMove4)}
       <Router>
-        <Main path="/" />
+        <Main path="/" pokemonList={ pokemon }/>
         <MoveSelector path="/move-selection" />
         <Battle path="battle" />
       </Router>

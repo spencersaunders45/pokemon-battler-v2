@@ -1,0 +1,18 @@
+#CardContainer{
+  border-style: solid;
+  border-radius: 25px;
+  box-shadow: 10px 10px 5px gray;
+}
+
+#CardName{
+  text-transform: capitalize;
+}
+
+#CardImg{
+  width: 40%;
+}
+
+.TypeText{
+  text-shadow: 0px 0px 5px black;
+  border-radius: 5px;
+}
