@@ -145,16 +145,30 @@ function App() {
 
   // update user pokemon+
   const updatePokemon = (pokemon) => {
-    setUserPokemon(pokemon)
+    setUserPokemonData(pokemon);
+    setUserPokemon(pokemon.name);
   }
+
+
+
+  // addes userPokemonData
+  useEffect(() => {
+    if(userPokemonData.stats !== undefined){
+      setUserHealth(userPokemonData.stats[0].base_stat);
+      setUserAttack(userPokemonData.stats[1].base_stat);
+      setUserDef(userPokemonData.stats[2].base_stat);
+      setUserSpecAtt(userPokemonData.stats[3].base_stat);
+      setUserSpecDef(userPokemonData.stats[4].base_stat);
+      setUserSpeed(userPokemonData.stats[5].base_stat);
+    }
+  }, [userPokemon])
 
 
 
   return (
     <div className="App">
-      {console.log(userPokemon)}
       <Router>
-        <Main path="/" pokemonList={ pokemon } userPokemon={ userPokemon } updatePokemon={ updatePokemon } />
+        <Main path="/" pokemonList={ pokemon } userPokemonData={ userPokemonData } updatePokemon={ updatePokemon } />
         <MoveSelector path="/move-selection" />
         <Battle path="battle" />
       </Router>

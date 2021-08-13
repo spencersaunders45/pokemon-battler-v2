@@ -16,7 +16,6 @@ export default (props) => {
     axios.get("https://pokeapi.co/api/v2/pokemon/" + pokemonName)
       .then(res => setPokemonData(res.data))
       .then(setLoaded(true))
-      console.log("loaded")
   }, [loaded])
 
 

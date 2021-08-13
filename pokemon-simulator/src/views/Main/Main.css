@@ -1,0 +1,7 @@
+.Container{
+  overflow: unset;
+}
+
+#LargeCardCol{
+  height: 100px;
+}
