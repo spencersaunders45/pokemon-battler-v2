@@ -169,8 +169,8 @@ function App() {
     <div className="App">
       <Router>
         <Main path="/" pokemonList={ pokemon } userPokemonData={ userPokemonData } updatePokemon={ updatePokemon } />
-        <MoveSelector path="/move-selection" />
-        <Battle path="battle" />
+        <MoveSelector path="/moves" pokemonMoves={ moves[userPokemon] } userPokemonData={ userPokemonData } />
+        <Battle path="/battle" />
       </Router>
     </div>
   );

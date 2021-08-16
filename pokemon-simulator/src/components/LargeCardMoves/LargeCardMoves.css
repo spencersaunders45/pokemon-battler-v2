@@ -1,0 +1,19 @@
+#Container{
+  border-style: solid;
+  border-radius: 25px;
+  box-shadow: 10px 10px 5px gray;
+}
+
+#Name{
+  text-transform: capitalize;
+}
+
+#Img{
+  max-height: 350px;
+  width: auto;
+}
+
+.Type{
+  text-shadow: 0px 0px 5px black;
+  border-radius: 5px;
+}
