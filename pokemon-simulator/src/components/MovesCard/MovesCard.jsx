@@ -5,7 +5,8 @@ import './MovesCard.css';
 import Type from '../../components/Type/Type';
 
 export default (props) => {
-  const moveName = props.move;
+  const moveName = props.moveName;
+  const setMove = props.setMove;
   const [moveData, setMoveData] = useState({});
   const [loaded, setLoaded] = useState(false);
 
@@ -31,6 +32,12 @@ export default (props) => {
 
 
 
+  const addMove = () => {
+    setMove(moveData);
+  }
+
+
+
   return(
     <div>
       {/* {console.log(moveData)} */}
@@ -52,7 +59,7 @@ export default (props) => {
             <p className="my-3">{findEnglishMoveDesc()}</p>
           </div>
           <div>
-            {/* <button onClick={setMoveSelect} className="btn btn-success my-3">Select Move</button> */}
+            <button onClick={ addMove } className="btn btn-danger my-3">Add Move</button>
           </div>
         </div>
       </div>

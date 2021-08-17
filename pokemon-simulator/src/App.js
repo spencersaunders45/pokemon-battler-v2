@@ -162,7 +162,21 @@ function App() {
 
 
   // Sets userMoves
-
+  const setUserMoves = (num, moveData) => {
+    if(num === 1){
+      setUserMove1Data(moveData);
+      setUserMove1pp(moveData.pp);
+    } else if(num === 2){
+      setUserMove2Data(moveData);
+      setUserMove2pp(moveData.pp);
+    } else if(num === 3){
+      setUserMove3Data(moveData);
+      setUserMove3pp(moveData.pp);
+    } else if(num === 4){
+      setUserMove4Data(moveData);
+      setUserMove4pp(moveData.pp);
+    }
+  }
 
 
 
@@ -170,7 +184,7 @@ function App() {
     <div className="App">
       <Router>
         <Main path="/" pokemonList={ pokemon } userPokemonData={ userPokemonData } updatePokemon={ updatePokemon } />
-        <MoveSelector path="/moves" pokemonMoves={ moves[userPokemon] } userPokemonData={ userPokemonData } />
+        <MoveSelector path="/moves" pokemonMoves={ moves[userPokemon] } userPokemonData={ userPokemonData } userMove1Data={ userMove1Data } userMove2Data={ userMove2Data } userMove3Data={ userMove3Data } userMove4Data={ userMove4Data } setUserMoves={ setUserMoves } />
         <Battle path="/battle" />
       </Router>
     </div>
