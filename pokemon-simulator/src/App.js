@@ -23,10 +23,6 @@ function App() {
   const [userSpecAtt, setUserSpecAtt] = useState(null);
   const [userSpecDef, setUserSpecDef] = useState(null);
   const [userSpeed, setUserSpeed] = useState(null);
-  const [userMove1, setUserMove1] = useState('');
-  const [userMove2, setUserMove2] = useState('');
-  const [userMove3, setUserMove3] = useState('');
-  const [userMove4, setUserMove4] = useState('');
   const [userMove1pp, setUserMove1pp] = useState(null);
   const [userMove2pp, setUserMove2pp] = useState(null);
   const [userMove3pp, setUserMove3pp] = useState(null);
@@ -162,6 +158,11 @@ function App() {
       setUserSpeed(userPokemonData.stats[5].base_stat);
     }
   }, [userPokemon])
+
+
+
+  // Sets userMoves
+
 
 
 
