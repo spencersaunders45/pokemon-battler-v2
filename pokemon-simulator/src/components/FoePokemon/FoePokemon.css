@@ -1,0 +1,12 @@
+#FoeImgDiv{
+  max-width: 400px !important;
+}
+
+#FoeImg{
+  width: 100% !important;
+}
+
+#FoeInfoBar{
+  max-width: 600px !important;
+  width: 100%;
+}
