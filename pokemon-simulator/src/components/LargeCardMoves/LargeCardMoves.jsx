@@ -11,7 +11,14 @@ export default (props) => {
   const userMove4Data = props.userMove4Data;
   const userPokemonData = props.userPokemonData;
   const changeSelectedMove = props.changeSelectedMove;
+  const setUserFoeData = props.setUserFoeData;
   const [loaded, setLoaded] = useState(false);
+
+
+
+  const callSetDataFunction = () => {
+    setUserFoeData();
+  };
 
 
 
@@ -56,7 +63,7 @@ export default (props) => {
             {userMove1Data.name === undefined || userMove2Data.name === undefined || userMove3Data.name === undefined || userMove4Data.name === undefined ?
             <button className="btn btn-outline-danger" disabled>Battle</button>
             :
-            <Link to={"/battle"} className="btn btn-danger" >Battle</Link>
+            <Link to={"/battle"} onClick={ callSetDataFunction } className="btn btn-danger" >Battle</Link>
             }
           </div>
         </div>

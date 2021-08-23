@@ -1,0 +1,18 @@
+#BattleContainer{
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: 100vw 100vh;
+}
+
+.DataRows{
+  height: 50vh;
+}
+
+.DataDivs{
+  min-width: 100px !important;
+  max-width: 500px !important;
+}
+
+.PokemonImg{
+  width: 100%;
+}

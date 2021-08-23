@@ -1,0 +1,17 @@
+#DataDiv{
+  min-width: 100px !important;
+  max-width: 500px !important;
+}
+
+#PokemonImg{
+  width: 100%;
+}
+
+#PokeInfo{
+  max-width: 500px !important;
+  min-width: 150px !important;
+}
+
+#HealthBar{
+  
+}

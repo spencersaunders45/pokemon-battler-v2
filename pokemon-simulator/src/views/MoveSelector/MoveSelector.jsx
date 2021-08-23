@@ -13,6 +13,7 @@ export default (props) => {
   const pokemonMoves = props.pokemonMoves;
   const userPokemonData = props.userPokemonData;
   const setUserMoves = props.setUserMoves;
+  const setUserFoeData = props.setUserFoeData;
   const [selectedMove, setSelectedMove] = useState(1);
 
 
@@ -37,7 +38,7 @@ export default (props) => {
           )}
         </div>
         <div className="col">
-          <LargeCardMoves userPokemonData={ userPokemonData } changeSelectedMove={ changeSelectedMove } userMove1Data={ userMove1Data } userMove2Data={ userMove2Data } userMove3Data={ userMove3Data } userMove4Data={ userMove4Data } />
+          <LargeCardMoves userPokemonData={ userPokemonData } changeSelectedMove={ changeSelectedMove } userMove1Data={ userMove1Data } userMove2Data={ userMove2Data } userMove3Data={ userMove3Data } userMove4Data={ userMove4Data } setUserFoeData={ setUserFoeData } />
         </div>
       </div>
     </div>
