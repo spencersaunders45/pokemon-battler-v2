@@ -10,7 +10,7 @@ export default (props) => {
 
   return(
     <div className="container-auto">
-      <div className="row">
+      <div className="row justify-content-end">
       <div id="FoeInfoBar" className="col-auto bg-light border border-dark border-3 rounded">
           <div className="row my-3">
             <div className="col">
@@ -21,14 +21,14 @@ export default (props) => {
           </div>
           <div className="row text-start">
             <div className="col text-capitalize">
-              <h1>{ foeData.pokemonData.name }</h1>
+              <h4>{ foeData.pokemonData.name }</h4>
             </div>
             <div className="col">
-              <h1>{ foeData.health } / { foeData.health }</h1>
+              <h4>{ foeData.health } / { foeData.health }</h4>
             </div>
           </div>
         </div>
-        <div className="row">
+        <div className="row justify-content-end">
           <div id="FoeImgDiv" className="col">
             <img id="FoeImg" src={ foeData.pokemonData.sprites.front_default } alt={ foeData.pokemonData.name } />
           </div>

@@ -1,5 +1,5 @@
 #FoeImgDiv{
-  max-width: 400px !important;
+  max-width: 200px !important;
 }
 
 #FoeImg{
@@ -7,6 +7,6 @@
 }
 
 #FoeInfoBar{
-  max-width: 600px !important;
-  width: 100%;
+  max-height: 25vh !important;
+  height: 100%;
 }

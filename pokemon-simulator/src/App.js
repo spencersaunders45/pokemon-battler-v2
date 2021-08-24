@@ -11,7 +11,7 @@ function App() {
   const pokemon = ["venusaur", "charizard", "blastoise", "alakazam", "gengar"]
   const moves = {venusaur: ["growl", "sleep-powder", "tackle", "solar-beam", "razor-leaf", "take-down"], charizard: ["smokescreen", "sunny-day", "flamethrower", "slash", "fire-spin", "scratch"], blastoise: ["protect", "rain-dance", "bite", "hydro-pump", "tackle", "aqua-tail"], alakazam: ["disable", "recover", "psychic", "psybeam", "thunder-punch", "swift"], gengar: ["confuse-ray", "protect", "shadow-ball", "shadow-punch", "dark-pulse", "thief"]};
   // ---------------------------------------------------
-  const [userPokemon, setUserPokemon] = useState('charizard');
+  const [userPokemon, setUserPokemon] = useState('');
   const [userPokemonData, setUserPokemonData] = useState({});
   const [userHealth, setUserHealth] = useState(null);
   const [userAttack, setUserAttack] = useState(null);

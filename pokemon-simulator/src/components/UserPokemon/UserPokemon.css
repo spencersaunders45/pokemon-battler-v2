@@ -1,4 +1,4 @@
-#UserImgDiv{
+/* #UserImgDiv{
   max-width: 600px !important;
 }
 
@@ -7,6 +7,21 @@
 }
 
 #UserInfoBar{
-  max-width: 600px !important;
+  max-width: 250px !important;
+  max-height: 250px !important;
   width: 100%;
+  height: 100%;
+} */
+
+#UserImgDiv{
+  max-width: 300px !important;
+}
+
+#UserImg{
+  width: 100% !important;
+}
+
+#UserInfoBar{
+  max-height: 25vh !important;
+  height: 100%;
 }

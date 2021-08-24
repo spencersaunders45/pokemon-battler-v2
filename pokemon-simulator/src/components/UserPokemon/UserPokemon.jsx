@@ -21,10 +21,10 @@ export default (props) => {
           </div>
           <div className="row text-start">
             <div className="col text-capitalize">
-              <h1>{ userData.pokemonData.name }</h1>
+              <h4>{ userData.pokemonData.name }</h4>
             </div>
             <div className="col">
-              <h1>{userData.health} / {userData.health}</h1>
+              <h4>{userData.health} / {userData.health}</h4>
             </div>
           </div>
         </div>
