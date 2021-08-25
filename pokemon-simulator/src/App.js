@@ -180,8 +180,7 @@ function App() {
   const setUserFoeData = () => {
     setUserData({
       pokemonData: userPokemonData,
-      health: userHealth,
-      status: 'healthy',
+      health: userHealth*2,
       attack: userAttack,
       def: userDef,
       specAtt: userSpecAtt,
@@ -198,8 +197,7 @@ function App() {
     });
     setFoeData({
       pokemonData: foePokemonData,
-      health: foeHealth,
-      status: 'healthy',
+      health: foeHealth*2,
       attack: foeAttack,
       def: foeDef,
       specAtt: foeSpecAtt,

@@ -1,9 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import './BattleMenu.css';
 
 export default (props) => {
   const userData = props.userData;
+  const attackTurn = props.attackTurn;
+  const findMove = props.findMove;
+  const userStatus = props.userStatus;
+  const wakeUp = props.wakeUp;
+  const [sleepCount, setSleepCount] = useState(0);
+
+
+
+  const useMove = (moveData) => {
+    if(attackTurn === 'user'){
+      if(userStatus === 'sleep'){
+        if(sleepCount > 3){
+          wakeUp('user')
+        }
+        let R = Math.random * (1-0) + 0;
+
+      }
+      findMove(moveData, userData);
+    }
+  }
 
 
 

@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import './FoePokemon.css'
 
 export default (props) => {
   const foeData = props.foeData;
-  const foePercentHealth = props.foePercentHealth;
+  const health = props.health;
+  const [percentHealth, setPercentHealth] = useState('100%');
+
+
+
+  useEffect(() => {
+    let percent = (health/foeData.health) * 100;
+    setPercentHealth(percent.toString() + '%');
+  }, [health])
 
 
 
@@ -15,7 +23,7 @@ export default (props) => {
           <div className="row my-3">
             <div className="col">
               <div className="progress">
-                <div className="progress-bar bg-success" role="progressbar" style={{ width: '100%' }} aria-valuenow="200" aria-valuemin="0" aria-valuemax="200"></div>
+                <div className="progress-bar bg-success" role="progressbar" style={{ width: percentHealth }} aria-valuenow="200" aria-valuemin="0" aria-valuemax="200"></div>
               </div>
             </div>
           </div>
