@@ -67,7 +67,31 @@ export default (props) => {
 
 
   const moveDamage = (power, att, def, moveType, type1, type2) => {
-    let damage = (((power*(att/def))/50)+2)*weather*type
+    let weatherBonus = 1;
+    let typeBonus = 1;
+    if(weather === 'rain' && moveType === 'water'){
+      weatherBonus = 1.5;
+    } else if(weather === 'sunny' && moveType === 'fire'){
+      weatherBonus = 1.5;
+    }
+    if(moveType === 'fire' && type1 ==='grass' || type2 === 'grass'){
+      typeBonus = 2;
+    } else if(moveType === 'electric' && type1 === 'flying' || type2 === 'flying' || type1 === 'water' || type2 === 'water'){
+      typeBonus = 2;
+    } else if(moveType === 'grass' && type1 === 'water' || type2 === 'water'){
+      typeBonus = 2;
+    } else if(moveType === 'psychic' && type1 === 'ghost' || type2 === 'ghost'){
+      typeBonus = 2;
+    } else if(moveType === 'water' && type1 === 'fire' || type2 === 'fire'){
+      typeBonus = 2;
+    } else if(moveType === 'fire' && type1 === 'water' || type2 === 'water'){
+      typeBonus = .5;
+    } else if(moveType === 'ghost' && type1 === 'psychic' || type2 === 'psychic'){
+      typeBonus = .5;
+    } else if(moveType === 'grass' && type1 === 'fire' || type2 === 'fire'){
+      typeBonus = .5;
+    }
+    let damage = (((power*(att/def))/50)+2)*weatherBonus*typeBonus
     return(damage);
   }
 
@@ -101,8 +125,13 @@ export default (props) => {
     }
   }
 
-  const confused = () => {
-
+  const confused = (pokeData, player) => {
+    let damage = (((40*(pokeData.att/pokeData.def))/50)+2);
+    if(player === 'user'){
+      setUserHealth(userHealth - damage);
+    } else if(player === 'foe'){
+      setFoeHealth(foeHealth - damage);
+    }
   }
 
   const notConfused = (player) => {
@@ -179,6 +208,7 @@ export default (props) => {
 
 
   const flamethrower = (power, att, def, moveType, accuracy, type1, type2) => {
+    console.log('here')
     let health = null;
     let hit = accuracyCheck(accuracy);
     if(hit === true){
@@ -321,7 +351,7 @@ export default (props) => {
           <UserPokemon userData={ userData } health={ userHealth } />
         </div>
         <div className="col-auto">
-          <BattleMenu userData={ userData } setAttackTurn={ attackTurn } findMove={ findMove } userStatus={ userStatus } wakeUp={ wakeUp } />
+          <BattleMenu userData={ userData } setAttackTurn={ attackTurn } findMove={ findMove } userStatus={ userStatus } wakeUp={ wakeUp } confused={ confused } notConfused={ notConfused } />
         </div>
       </div>
     </div>
